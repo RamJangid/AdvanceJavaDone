@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package ="com.first.hibernate.project.done" >
+
+	<class name = "Employee" table = "Employee_Hibernate">
+	
+		<id name = "eid" column = "E_ID">
+		<generator class="increament"></generator>
+		</id>
+	
+	
+	
+	</class>
+
+
+
+</hibernate-mapping>

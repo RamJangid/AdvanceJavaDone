@@ -1,0 +1,15 @@
+package com.first.hibernate.project.done;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+public class EmployeeClient 
+{
+
+	public static void main(String[] args) 
+	{
+		SessionFactory factory = null;
+		Transaction tx = null;
+	}
+
+}

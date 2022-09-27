@@ -1,0 +1,20 @@
+INDEX VERSION 1.4+C:\Users\91820\Music\FullStackDeveloper\EclipseCode\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2251615454.index
+735860072.index
+3929064982.index
+4218718779.index
+455275192.index
+1063835834.index
+1993262592.index
+41845865.index
+4044293499.index
+2287485474.index
+3970819791.index
+165679252.index
+601615832.index
+2115765533.index
+3344889978.index
+1925800969.index
+4232952357.index
+3344889978.index
+2038398354.index

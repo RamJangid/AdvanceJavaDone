@@ -1,0 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Book the Selected Flight by making Payment</title>
+</head>
+<body>
+		<h1>These are the payment gateway, please pay the amount and confirm the booking</h1>
+</body>
+</html>

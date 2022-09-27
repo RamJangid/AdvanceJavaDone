@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 5.3//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-5.3.dtd">  
+
+<hibernate-mapping>
+
+	<class name = "com.myproject.hibernate.done.Customer" table = "Customers">
+
+		<id name = "cid" column ="Cid" type = "int">
+		<generator class = "increament"/>
+		</id>
+
+		<property name = "name" column = "Name"/>
+		<property name = "email" column = "Email"/>
+		<property name = "phone" column = "Phone" type ="long"/>
+		<property name = "city" column = "City" type ="string"/>
+		<property name = "bal" column = "Bal" type ="double"/>
+
+	</class>
+
+</hibernate-mapping>

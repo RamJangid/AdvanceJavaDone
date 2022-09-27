@@ -1,0 +1,12 @@
+package main.java.model;
+
+public abstract class Search {
+    public static String date_of_travel;
+    public static String source_place;
+    public static String destination_place;
+    public static int persons;
+
+    public static String getQuery() {
+        return "SELECT * FROM flight_details_done WHERE source_place = '"+source+"' AND destination_place='"+destination+"' AND date_of_travel='"+date+"'";
+    }
+}

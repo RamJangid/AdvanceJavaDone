@@ -1,0 +1,228 @@
+package com.newproject.jdbc.done;
+
+import jakarta.servlet.RequestDispatcher
+;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import com.myproject.jdbcutil.done.JDBCUtil;
+
+@WebServlet("/")
+public class FlyAwayServlet extends HttpServlet 
+{
+	public static final String INSERT = "INSERT INTO TRAVEL_DETAILS VALUES(?,?,?,?)";
+	
+	
+	private static final long serialVersionUID = 1L;
+       
+ 
+    public FlyAwayServlet() {
+        super();
+      
+    }
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		System.out.println("**************Start doPost()**************");
+		String path = request.getServletPath();
+		System.out.println("Path : "+path);
+		
+		switch(path)
+		{
+			case "/available_Flights" :
+			{
+				try {
+					saveData(request,response);
+				} catch (ServletException | IOException | ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			}
+			
+//			case "/getByEmail" :
+//			{
+//				getByEmailID(request,response);
+//				break;
+//			}
+		}
+		
+		System.out.println("**************End doPost()**************");
+	}
+	
+
+	public static void saveData(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException
+	{
+		System.out.println("**************Start saveData()**************");
+		Connection conn = null;
+		
+		
+	      
+		Date Date_Of_Travel=new SimpleDateFormat("dd-MM-yyyy").parse(request.getParameter("D_Of_Trvl"));
+		SimpleDateFormat sdformat = new SimpleDateFormat("dd-MM-yyyy");
+	      Date d1 = sdformat.parse("21-09-2022");
+	      Date d2 = sdformat.parse("21-09-2022");
+	      Date d3 = sdformat.parse("21-09-2022");
+	      
+	      
+		String Source = (String)request.getParameter("source");
+		String Destination = (String)request.getParameter("destination");
+		String No_Of_Person = (String)request.getParameter("No_Of_Person");
+		
+		System.out.println(Date_Of_Travel);
+		System.out.println(Source);
+		System.out.println(Destination);
+		System.out.println(No_Of_Person);
+		
+		
+		try 
+		{
+			conn = JDBCUtil.getMySqlConnection();
+			
+			PreparedStatement pstmt = conn.prepareStatement(INSERT);
+			
+			DateFormat sdformat = new SimpleDateFormat("dd-MM-yyyy");
+			String strDate = sdformat.format(Date_Of_Travel);
+			pstmt.setString(1, strDate);
+			pstmt.setString(2, Source);
+			pstmt.setString(3, Destination);
+			pstmt.setString(4, No_Of_Person);
+			
+			pstmt.execute();
+			
+			System.out.println("Records are Inserted Successfully");
+		
+			System.out.println("Closing the Resources");
+			
+			conn.close();
+			pstmt.close();
+			
+			request.setAttribute("D_Of_Trvl", Date_Of_Travel);
+			request.setAttribute("SRC", Source);
+			request.setAttribute("Dstn", Destination);
+			request.setAttribute("NO_Of_Prsn", No_Of_Person);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("showFlight.jsp");
+			rd.forward(request, response);
+				
+			conn.close();
+			pstmt.close();
+			
+		} 
+		catch (SQLException e) 
+		{
+			System.err.println("Records are not updated due to this Error");
+			e.printStackTrace();
+		}
+		
+		//display(request,response);
+		System.out.println("**************End saveData()**************");
+	}
+	
+	
+	
+	
+//	private void getByEmailID(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+//	{
+//		System.out.println("**************Start getByEmailID()**************");
+//		
+//		Connection conn = null;
+//		
+//		String emailId = (String)request.getParameter("emailId");
+//		System.out.println(emailId);
+//		
+//		try 
+//		{
+//			conn = JDBCUtil.getMySqlConnection();
+//			
+//			PreparedStatement pstmt = conn.prepareStatement(SEARCH_BY_EMAIL);
+//			
+//			
+//			pstmt.setString(1, emailId);
+//			
+//			
+//			ResultSet rs = pstmt.executeQuery();
+//			
+//			while(rs.next())
+//			{
+//				String firstName = rs.getString("STU_FirstName");
+//				String lastName = rs.getString("STU_LastName");
+//				String email = rs.getString("STU_Email");
+//				String password = rs.getString("STU_Password");
+//				
+//				System.out.println("firstName : "+firstName);
+//				System.out.println("lastName : "+lastName);
+//				System.out.println("email : "+email);
+//				System.out.println("password : "+password);
+//				
+//				displaySearchResult(firstName,lastName,email,password,request,response);
+//			}
+//			
+//			System.out.println("Records are searched Successfully");
+//		
+//			System.out.println("Closing the Resources");
+//			
+//			conn.close();
+//			pstmt.close();
+//				
+//			
+//		} 
+//		catch (SQLException e) 
+//		{
+//			System.err.println("Records are not updated due to this Error");
+//			e.printStackTrace();
+//		}
+//		
+//		System.out.println("**************End getByEmailID()**************");
+//		
+//	}
+//	
+	
+	
+	
+//	private void displaySearchResult(String firstName, String lastName, String email, String password,
+//			HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+//	{
+//		request.setAttribute("FName", firstName);
+//		request.setAttribute("LName", lastName);
+//		request.setAttribute("Email", email);
+//		request.setAttribute("Pass", password);
+//		
+//		RequestDispatcher rd = request.getRequestDispatcher("searchresult.jsp");
+//		rd.forward(request, response);
+//		
+//	}
+
+//	public static void display(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+//	{
+//		System.out.println("**************Start display()**************");
+//
+//		String firstName = (String)request.getParameter("firstName");
+//		String lastName = (String)request.getParameter("lastName");
+//		String emailId = (String)request.getParameter("emailId");
+//		String password = (String)request.getParameter("password");
+//		
+//		request.setAttribute("FName", firstName);
+//		request.setAttribute("LName", lastName);
+//		request.setAttribute("Email", emailId);
+//		request.setAttribute("Pass", password);
+//		
+//		RequestDispatcher rd = request.getRequestDispatcher("show.jsp");
+//		rd.forward(request, response);
+//		
+//		System.out.println("**************End display()**************");
+//	}
+
+}

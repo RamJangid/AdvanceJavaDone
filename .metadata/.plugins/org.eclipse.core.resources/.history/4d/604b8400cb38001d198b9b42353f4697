@@ -1,0 +1,36 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Simplilearn Registration</title>
+</head>
+<body>
+	
+	<h1>Simplilearn Registration Form</h1>
+	
+	<form action="<%= request.getContextPath()%>/insert" method="post">
+	
+	Date Of Travel : <input type ="text" name = "dateOfTravel">
+	<br><br>
+	Source : <input type ="text" name = "source">
+	<br><br>
+	Destination : <input type ="text" name ="destination">
+	<br><br>
+	No. Of Person : <input type ="text" name ="No_Of_Person">
+	
+	<tr>
+	
+			<td colspan = 2 align = "center">
+				<input type = "submit" value = "Register">
+			</td>
+	
+	</tr>
+	
+	</form>
+	
+	
+</body>
+
+</html>

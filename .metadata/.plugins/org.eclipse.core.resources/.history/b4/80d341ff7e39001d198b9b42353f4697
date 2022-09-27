@@ -1,0 +1,67 @@
+<%@page import = "java.util.*" %>
+<%@page import = "java.text.SimpleDateFormat" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Show Flights</title>
+</head>
+<body>
+		<h1>Here are the list of available Flights as per the entered details</h1>
+		
+		Date_Of_Travel : <%= request.getAttribute("D_Of_Trvl") %>
+		<br>
+		
+		<% Date Date_Of_Travel=request.getAttribute("D_Of_Trvl");
+		
+		SimpleDateFormat sdformat = new SimpleDateFormat("dd-MM-yyyy");
+	      Date d1 = sdformat.parse("21-09-2022");
+	      Date d2 = sdformat.parse("21-09-2022");
+	      Date d3 = sdformat.parse("21-09-2022");
+	      
+			if(Date_Of_Travel.compareTo(d1)==0)
+			{
+		%>
+		
+		<h2>Below are available flights on the date <%= Date_Of_Travel %></h2>		
+				<h3>Air_Asia</h3><br>
+				<h3>SpiceJet</h3><br>
+				<h3>Indigo</h3><br>
+		<% 
+			}
+			
+			
+			else if(Date_Of_Travel.compareTo(d2)==0)
+			{
+		%>
+		
+		<h2>Below are available flights on the date <%= Date_Of_Travel %></h2>		
+				<h3>Air_Asia</h3><br>
+				<h3>SpiceJet</h3><br>
+				<h3>Indigo</h3><br>
+		<% 
+			}
+			else if(Date_Of_Travel.compareTo(d3)==0)
+			{
+		%>
+		
+		<h2>Below are available flights on the date <%= Date_Of_Travel %></h2>		
+				<h3>Air_Asia</h3><br>
+				<h3>SpiceJet</h3><br>
+				
+		<% 
+			}
+			
+			else
+			{
+		%>	
+		
+		<h2>Please enter the correct date</h2>	
+		
+		<%
+		
+			}
+		
+		%>
+</body>
+</html>

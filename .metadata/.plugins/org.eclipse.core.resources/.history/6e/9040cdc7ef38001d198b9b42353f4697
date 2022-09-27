@@ -1,0 +1,59 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Show data</title>
+</head>
+<body>
+		<h1>Here are the list of available Flights as per the entered details</h1>
+		
+		Date_Of_Travel : <%= request.getAttribute("D_Of_Trvl") %>
+		<br>
+		
+		<% String Date_Of_Travel = (String)request.getAttribute("D_Of_Trvl"); 
+			if(Date_Of_Travel.equalsIgnoreCase("21/9/2022"))
+			{
+		%>
+		
+		<h2>Below are available flights on the date <%= Date_Of_Travel %></h2>		
+				<h3>Air_Asia</h3><br>
+				<h3>SpiceJet</h3><br>
+				<h3>Indigo</h3><br>
+		<% 
+			}
+			
+			
+			else if(Date_Of_Travel.equalsIgnoreCase("23/9/2022"))
+			{
+		%>
+		
+		<h2>Below are available flights on the date <%= Date_Of_Travel %></h2>		
+				<h3>Air_Asia</h3><br>
+				<h3>SpiceJet</h3><br>
+				<h3>Indigo</h3><br>
+		<% 
+			}
+			else if(Date_Of_Travel.equalsIgnoreCase("25/9/2022"))
+			{
+		%>
+		
+		<h2>Below are available flights on the date <%= Date_Of_Travel %></h2>		
+				<h3>Air_Asia</h3><br>
+				<h3>SpiceJet</h3><br>
+				<h3>Indigo</h3><br>
+		<% 
+			}
+			
+			else
+			{
+		%>	
+		
+		<h2>Please enter the correct date</h2>	
+		<%
+			}
+		
+		%>
+</body>
+</html>
